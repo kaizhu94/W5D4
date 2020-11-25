@@ -9,4 +9,9 @@
 #
 class User < ApplicationRecord
     validates :email, presence: true, uniqueness: true
+
+    has_many :urls,
+      class_name: :ShortenUrl, #on other end of association
+      foreign_key: :user_id,
+      primary_key: :id
 end
